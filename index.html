@@ -1,0 +1,2066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What the State Pays — A Guide to UK Benefits</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a18;
+    --paper: #f5f0e8;
+    --cream-dark: #e8e0cc;
+    --green: #2d5016;
+    --green-mid: #4a7c2a;
+    --green-light: #d4e8c2;
+    --green-faint: #edf5e4;
+    --red: #8b1a1a;
+    --red-light: #f5e4e4;
+    --blue-gov: #1d4f7c;
+    --blue-light: #dce8f5;
+    --amber: #7a5200;
+    --amber-light: #fdf3d8;
+    --rule: #b8a888;
+    --stamp: rgba(45, 80, 22, 0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(184,168,136,0.15) 27px, rgba(184,168,136,0.15) 28px);
+    color: var(--ink);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--green);
+    color: var(--paper);
+    padding: 0;
+    border-bottom: 4px solid var(--green-mid);
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 8px,
+      rgba(255,255,255,0.03) 8px,
+      rgba(255,255,255,0.03) 9px
+    );
+  }
+
+  .header-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 28px 20px 24px;
+    position: relative;
+  }
+
+  .form-ref {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.6);
+    margin-bottom: 8px;
+  }
+
+  header h1 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(22px, 5vw, 36px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--paper);
+    margin-bottom: 10px;
+  }
+
+  header h1 em {
+    font-style: italic;
+    color: var(--green-light);
+  }
+
+  .header-standfirst {
+    font-size: 15px;
+    color: rgba(245,240,232,0.82);
+    max-width: 580px;
+    line-height: 1.55;
+    border-left: 2px solid var(--green-mid);
+    padding-left: 12px;
+    margin-top: 12px;
+  }
+
+  .crown {
+    position: absolute;
+    right: 20px;
+    top: 24px;
+    opacity: 0.18;
+    font-size: 52px;
+    line-height: 1;
+  }
+
+  /* FILTERS */
+  .filters-wrap {
+    background: var(--green);
+    border-bottom: 2px solid var(--green-mid);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .filters {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .filter-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.55);
+    margin-right: 4px;
+    white-space: nowrap;
+  }
+
+  .chip {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--paper);
+    padding: 4px 12px;
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+  }
+
+  .chip:hover { background: rgba(255,255,255,0.18); }
+  .chip.active {
+    background: var(--paper);
+    color: var(--green);
+    border-color: var(--paper);
+  }
+
+  /* MAIN */
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 16px 60px;
+  }
+
+  /* CATEGORY GROUP */
+  .category {
+    margin-top: 32px;
+  }
+
+  .category-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--rule);
+    margin-bottom: 16px;
+  }
+
+  .category-header h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--green);
+    letter-spacing: -0.01em;
+  }
+
+  .category-header p {
+    font-size: 12px;
+    color: #666;
+    font-style: italic;
+    flex: 1;
+  }
+
+  .category-count {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--rule);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  /* BENEFIT CARD */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  @media (min-width: 600px) {
+    .cards-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .card {
+    background: white;
+    border: 1px solid var(--cream-dark);
+    border-top: 3px solid var(--rule);
+    padding: 14px 16px 12px;
+    position: relative;
+    transition: border-top-color 0.15s, box-shadow 0.15s;
+    cursor: default;
+  }
+
+  .card:hover {
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+
+  .card.type-universal { border-top-color: var(--blue-gov); }
+  .card.type-contributory { border-top-color: var(--amber); }
+  .card.type-means-tested { border-top-color: var(--red); }
+  .card.type-disability { border-top-color: var(--green-mid); }
+  .card.type-pension { border-top-color: #6b4c9a; }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .card h3 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--ink);
+    flex: 1;
+  }
+
+  .type-badge {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 1px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .badge-universal { background: var(--blue-light); color: var(--blue-gov); }
+  .badge-contributory { background: var(--amber-light); color: var(--amber); }
+  .badge-means-tested { background: var(--red-light); color: var(--red); }
+  .badge-disability { background: var(--green-faint); color: var(--green); }
+  .badge-pension { background: #f0ebf8; color: #6b4c9a; }
+
+  .card-desc {
+    font-size: 13px;
+    color: #444;
+    line-height: 1.45;
+    margin-bottom: 10px;
+  }
+
+  .card-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 8px;
+    border-top: 1px dashed var(--cream-dark);
+    padding-top: 8px;
+  }
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .meta-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #999;
+  }
+
+  .meta-value {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* QUIRK BOX */
+  .quirk {
+    margin-top: 8px;
+    background: var(--amber-light);
+    border-left: 3px solid var(--amber);
+    padding: 6px 9px;
+    font-size: 12px;
+    color: var(--amber);
+    line-height: 1.4;
+    font-style: italic;
+  }
+
+  .quirk.quirk-red {
+    background: var(--red-light);
+    border-color: var(--red);
+    color: var(--red);
+  }
+
+  .quirk.quirk-blue {
+    background: var(--blue-light);
+    border-color: var(--blue-gov);
+    color: var(--blue-gov);
+  }
+
+  .quirk.quirk-green {
+    background: var(--green-faint);
+    border-color: var(--green-mid);
+    color: var(--green);
+  }
+
+  /* HIDDEN */
+  .card.hidden { display: none; }
+  .category.hidden { display: none; }
+
+  /* KEY */
+  .key-section {
+    margin-top: 36px;
+    border: 1px solid var(--rule);
+    padding: 16px 18px;
+    background: white;
+  }
+
+  .key-section h3 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+
+  .key-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+  }
+
+  .key-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+  }
+
+  .key-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 1px;
+    flex-shrink: 0;
+  }
+
+  /* FOOTER NOTE */
+  .footer-note {
+    max-width: 860px;
+    margin: 32px auto 0;
+    padding: 0 16px 40px;
+    font-size: 11px;
+    color: #999;
+    line-height: 1.6;
+    border-top: 1px solid var(--rule);
+    padding-top: 14px;
+  }
+
+  /* EMPTY STATE */
+  .empty-state {
+    display: none;
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+    font-style: italic;
+    font-family: 'Libre Baskerville', serif;
+  }
+
+  .empty-state.visible { display: block; }
+
+  /* INTRO EXPLAINER */
+  .explainer {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+  }
+
+  @media (max-width: 599px) {
+    .explainer { grid-template-columns: 1fr; }
+  }
+
+  .explainer-item {
+    border-left: 3px solid;
+    padding: 10px 12px;
+    background: white;
+  }
+
+  .explainer-item:nth-child(1) { border-color: var(--blue-gov); }
+  .explainer-item:nth-child(2) { border-color: var(--amber); }
+  .explainer-item:nth-child(3) { border-color: var(--red); }
+
+  .explainer-item strong {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+  }
+
+  .explainer-item:nth-child(1) strong { color: var(--blue-gov); }
+  .explainer-item:nth-child(2) strong { color: var(--amber); }
+  .explainer-item:nth-child(3) strong { color: var(--red); }
+
+  .explainer-item p { font-size: 12px; color: #555; line-height: 1.4; }
+
+  /* SEARCH */
+  .search-wrap {
+    max-width: 860px;
+    margin: 20px auto 0;
+    padding: 0 16px;
+  }
+
+  .search-input {
+    width: 100%;
+    border: 1px solid var(--rule);
+    border-bottom: 2px solid var(--green);
+    background: white;
+    padding: 10px 14px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    outline: none;
+  }
+
+  .search-input::placeholder { color: #bbb; font-style: italic; }
+  .search-input:focus { border-bottom-color: var(--green-mid); }
+
+  /* COUNTS BANNER */
+  .counts-banner {
+    max-width: 860px;
+    margin: 12px auto 0;
+    padding: 0 16px;
+    font-size: 12px;
+    color: #888;
+    font-style: italic;
+  }
+
+  /* ── CASE STUDIES ─────────────────────────────────────────── */
+  .cases-section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 28px 16px 8px;
+  }
+
+  .cases-header {
+    border-bottom: 2px solid var(--rule);
+    padding-bottom: 10px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+
+  .cases-header h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--green);
+  }
+
+  .cases-header p {
+    font-size: 13px;
+    color: #666;
+    font-style: italic;
+    flex: 1;
+  }
+
+  .cases-scroll {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px 0 18px;
+  }
+
+  .case-card {
+    width: 100%;
+    background: white;
+    border: 1px solid var(--cream-dark);
+    border-left: 4px solid var(--ink);
+    padding: 16px 18px;
+    cursor: pointer;
+    transition: box-shadow 0.15s, border-left-color 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .case-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+  .case-card.active { border-left-color: var(--green); box-shadow: 0 2px 12px rgba(45,80,22,0.12); }
+
+  .case-persona {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .case-icon {
+    font-size: 26px;
+    line-height: 1;
+    width: 36px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .case-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .case-description {
+    font-size: 11px;
+    color: #777;
+    line-height: 1.35;
+    margin-top: 2px;
+  }
+
+  .case-total-line {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-shrink: 0;
+    padding-left: 16px;
+    border-left: 1px dashed var(--cream-dark);
+  }
+
+  .case-total-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #bbb;
+  }
+
+  .case-total-amount {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--green);
+    line-height: 1.1;
+  }
+
+  .case-total-period {
+    font-size: 10px;
+    color: #999;
+  }
+
+  .case-chevron {
+    font-size: 14px;
+    color: #ccc;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+
+  .case-card.active .case-chevron { transform: rotate(90deg); color: var(--green); }
+
+  /* IN-KIND ROWS */
+  .breakdown-table tr.inkind-row td {
+    color: #777;
+    font-style: italic;
+    background: var(--paper);
+    font-size: 12px;
+  }
+
+  .breakdown-table tr.inkind-row td:last-child {
+    font-weight: 400;
+    color: #999;
+    font-size: 11px;
+  }
+
+  .inkind-section-header td {
+    font-size: 9px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    color: #bbb !important;
+    padding-top: 12px !important;
+    font-style: normal !important;
+    background: transparent !important;
+    border-bottom: none !important;
+  }
+
+  .housing-note {
+    background: var(--blue-light);
+    border-left: 3px solid var(--blue-gov);
+    padding: 8px 10px;
+    font-size: 12px;
+    color: var(--blue-gov);
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+
+  /* EXPANDED DETAIL */
+  .case-detail {
+    display: none;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 16px 24px;
+  }
+
+  .case-detail.visible { display: block; }
+
+  .case-detail-inner {
+    background: white;
+    border: 1px solid var(--cream-dark);
+    border-left: 4px solid var(--green);
+    padding: 20px 22px;
+  }
+
+  .case-detail-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .case-detail-icon { font-size: 36px; line-height: 1; }
+
+  .case-detail-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .case-detail-subtitle {
+    font-size: 13px;
+    color: #666;
+    font-style: italic;
+  }
+
+  .case-narrative {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.65;
+    border-left: 2px solid var(--cream-dark);
+    padding-left: 14px;
+    margin-bottom: 18px;
+    font-style: italic;
+  }
+
+  .breakdown-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+
+  .breakdown-table th {
+    text-align: left;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #999;
+    padding: 4px 8px 6px;
+    border-bottom: 1px solid var(--cream-dark);
+  }
+
+  .breakdown-table th:last-child { text-align: right; }
+
+  .breakdown-table td {
+    padding: 7px 8px;
+    border-bottom: 1px dashed var(--cream-dark);
+    vertical-align: top;
+  }
+
+  .breakdown-table td:last-child {
+    text-align: right;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .breakdown-table .benefit-name {
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+
+  .breakdown-table .benefit-note {
+    font-size: 11px;
+    color: #888;
+    margin-top: 2px;
+    font-style: italic;
+  }
+
+  .breakdown-table tr.total-row td {
+    border-top: 2px solid var(--ink);
+    border-bottom: none;
+    padding-top: 10px;
+    font-weight: 700;
+    font-size: 15px;
+  }
+
+  .breakdown-table tr.total-row td:first-child {
+    font-family: 'Libre Baskerville', serif;
+    color: var(--green);
+  }
+
+  .breakdown-table tr.total-row td:last-child {
+    font-family: 'Libre Baskerville', serif;
+    color: var(--green);
+    font-size: 18px;
+  }
+
+  .case-insight {
+    background: var(--green-faint);
+    border-left: 3px solid var(--green-mid);
+    padding: 10px 12px;
+    font-size: 13px;
+    color: var(--green);
+    line-height: 1.5;
+  }
+
+  .case-insight strong { font-weight: 700; }
+
+  .type-pill {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 1px 5px;
+    border-radius: 1px;
+    margin-left: 4px;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+  }
+
+  .pill-universal { background: var(--blue-light); color: var(--blue-gov); }
+  .pill-means { background: var(--red-light); color: var(--red); }
+  .pill-disability { background: var(--green-faint); color: var(--green); }
+  .pill-contributory { background: var(--amber-light); color: var(--amber); }
+  .pill-asylum { background: #f0ebf8; color: #6b4c9a; }
+
+  .cases-divider {
+    max-width: 860px;
+    margin: 8px auto 0;
+    padding: 0 16px;
+    border: none;
+    border-top: 2px solid var(--rule);
+  }
+
+  /* INCOME CHART */
+  .income-section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 28px 16px 8px;
+  }
+
+  .income-section h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--green);
+    border-bottom: 2px solid var(--rule);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+
+  .income-intro {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+
+  .chart-wrap {
+    background: white;
+    border: 1px solid var(--cream-dark);
+    padding: 16px 8px 12px 8px;
+    overflow-x: auto;
+  }
+
+  #incomeChart { display: block; width: 100%; }
+
+  .chart-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-top: 12px;
+    font-size: 11px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .legend-swatch {
+    width: 24px;
+    height: 3px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .legend-swatch.dashed {
+    background: repeating-linear-gradient(90deg, var(--c) 0, var(--c) 4px, transparent 4px, transparent 8px);
+  }
+
+  .income-note {
+    font-size: 11px;
+    color: #999;
+    font-style: italic;
+    margin-top: 10px;
+    line-height: 1.55;
+  }
+
+  /* SALARY TABLE (kept for data below chart) */
+  .salary-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    background: white;
+    border: 1px solid var(--cream-dark);
+    margin-top: 16px;
+  }
+
+  .salary-table thead tr { background: var(--green); color: var(--paper); }
+
+  .salary-table th {
+    padding: 8px 8px;
+    text-align: right;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .salary-table th:first-child { text-align: left; }
+
+  .salary-table td {
+    padding: 7px 8px;
+    text-align: right;
+    border-bottom: 1px dashed var(--cream-dark);
+    font-variant-numeric: tabular-nums;
+    font-size: 12px;
+  }
+
+  .salary-table td:first-child { text-align: left; font-weight: 600; }
+  .salary-table tr:last-child td { border-bottom: none; }
+  .salary-table tr:nth-child(even) td { background: var(--paper); }
+  .salary-table .hl { color: var(--green); font-weight: 700; }
+  .salary-table .trap { background: #fff8f0 !important; }
+  .salary-table .trap .eff { color: var(--amber); font-weight: 700; }
+
+  /* CALCULATOR */
+  .calc-controls { background:white; border:1px solid var(--cream-dark); border-left:4px solid var(--green); padding:16px 18px 12px; margin-bottom:16px; }
+  .calc-row { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+  .calc-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--green); width:140px; flex-shrink:0; }
+  .calc-input-wrap { display:flex; align-items:center; gap:4px; border:1px solid var(--rule); border-bottom:2px solid var(--green); background:var(--paper); padding:5px 10px; }
+  .calc-prefix,.calc-suffix { font-size:13px; color:#888; font-weight:600; }
+  .calc-input { font-family:'Libre Baskerville',serif; font-size:18px; font-weight:700; color:var(--green); background:transparent; border:none; outline:none; width:110px; text-align:right; }
+  .calc-slider { width:100%; margin:8px 0 0; accent-color:var(--green); cursor:pointer; }
+  .calc-select { font-family:'Source Sans 3',sans-serif; font-size:13px; padding:5px 10px; border:1px solid var(--rule); border-bottom:2px solid var(--green); background:white; color:var(--ink); outline:none; flex:1; min-width:0; }
+  .calc-result { background:white; border:1px solid var(--cream-dark); padding:16px 18px; margin-bottom:20px; }
+  .calc-total { display:flex; align-items:baseline; gap:8px; margin-bottom:14px; padding-bottom:12px; border-bottom:2px solid var(--rule); flex-wrap:wrap; }
+  .calc-total-label { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#888; flex:1; }
+  .calc-total-amount { font-family:'Libre Baskerville',serif; font-size:32px; font-weight:700; color:var(--green); }
+  .calc-total-period { font-size:13px; color:#aaa; }
+  .calc-bar-wrap { height:28px; display:flex; border-radius:1px; overflow:hidden; margin-bottom:12px; background:var(--cream-dark); }
+  .calc-bar-segment { height:100%; transition:width 0.25s ease; }
+  .calc-breakdown { display:flex; flex-direction:column; gap:5px; }
+  .calc-line { display:flex; align-items:center; gap:8px; font-size:13px; }
+  .calc-dot { width:10px; height:10px; border-radius:1px; flex-shrink:0; }
+  .calc-line-label { flex:1; color:#444; }
+  .calc-line-value { font-weight:700; color:var(--ink); font-variant-numeric:tabular-nums; }
+  .calc-line-note { font-size:11px; color:#aaa; font-style:italic; }
+  .calc-withdrawn { margin-top:10px; padding-top:10px; border-top:1px dashed var(--cream-dark); font-size:11px; color:var(--red); font-style:italic; line-height:1.5; }
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="form-ref">Public Information — Benefits System Guide · 2024–25 Rates</div>
+    <h1>What the State Pays<br><em>A plain guide to UK benefits</em></h1>
+    <p class="header-standfirst">
+      "Benefits" is not one thing. It is dozens of separate programmes — some universal, some means-tested, some based on National Insurance contributions — each with different rates, different conditions, and different recipients. This guide maps the system as it actually is.
+    </p>
+    <div class="crown">♛</div>
+  </div>
+</header>
+
+<!-- ── CASE STUDIES ──────────────────────────────────────────── -->
+<div class="cases-section">
+  <div class="cases-header">
+    <h2>Ten households, ten different situations</h2>
+    <p>Same country, same rules — vastly different entitlements. Tap any row to see the full breakdown including benefits in kind.</p>
+  </div>
+  <div class="cases-scroll" id="casesScroll"></div>
+</div>
+
+<!-- ── CALCULATOR + CHART ─────────────────────────────────────── -->
+<div class="income-section">
+
+  <h2>Income calculator</h2>
+  <p class="income-intro">Enter a salary and select a household type to see total monthly income — earnings plus any benefit entitlements — broken down by source.</p>
+
+  <div class="calc-controls">
+    <div class="calc-row">
+      <label class="calc-label" for="salaryInput">Gross annual salary</label>
+      <div class="calc-input-wrap">
+        <span class="calc-prefix">£</span>
+        <input type="number" id="salaryInput" class="calc-input" value="25000" min="0" max="200000" step="1000">
+        <span class="calc-suffix">/yr</span>
+      </div>
+    </div>
+    <input type="range" id="salarySlider" class="calc-slider" min="0" max="150000" step="1000" value="25000">
+    <div class="calc-row" style="margin-top:10px;">
+      <label class="calc-label" for="householdSelect">Household type</label>
+      <select id="householdSelect" class="calc-select">
+        <option value="single_out">Single person, no children — outside London</option>
+        <option value="single_ldn">Single person, no children — London</option>
+        <option value="parent1_out">Single parent, 1 child (under 4) — outside London</option>
+        <option value="parent1_ldn">Single parent, 1 child (under 4) — London</option>
+        <option value="parent2_out">Single parent, 2 children (one under 4) — outside London</option>
+        <option value="parent2_ldn">Single parent, 2 children (one under 4) — London</option>
+        <option value="parent3_out">Single parent, 3 children (one under 4) — outside London</option>
+        <option value="parent3_ldn">Single parent, 3 children (one under 4) — London (inner)</option>
+        <option value="disability_out">Single parent, 2 children + disability (UC LCWRA + PIP) — outside London</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="calc-result" id="calcResult"></div>
+
+  <h2 style="margin-top:28px;">All salary bands — <span id="chartHouseholdLabel"></span></h2>
+  <p class="income-intro">Each bar shows total monthly income at that salary. Ticks mark where each benefit is fully withdrawn.</p>
+  <div class="chart-wrap">
+    <canvas id="incomeChart"></canvas>
+  </div>
+  <div class="chart-legend" id="chartLegend"></div>
+  <p class="income-note">UC housing element included at the LHA rate for that area. Assumes single claimant. Rates: 2024–25. Child Benefit HIBC taper: £60k–£80k (1 child), higher for more children. Free childcare (30hrs): lost above £100k per parent. UC tapers at 55p per £1 above work allowance.</p>
+</div>
+
+<hr class="cases-divider">
+
+<div class="filters-wrap">
+  <div class="filters">
+    <span class="filter-label">Show:</span>
+    <button class="chip active" data-filter="all">All benefits</button>
+    <button class="chip" data-filter="universal">Universal</button>
+    <button class="chip" data-filter="means-tested">Means-tested</button>
+    <button class="chip" data-filter="contributory">Contributory (NI)</button>
+    <button class="chip" data-filter="disability">Disability &amp; Carer</button>
+    <button class="chip" data-filter="pension">Pension-age</button>
+    <button class="chip" data-filter="sanctionable">Has sanctions</button>
+    <button class="chip" data-filter="uc-migration">UC migration</button>
+  </div>
+</div>
+
+<div class="search-wrap">
+  <input class="search-input" type="search" placeholder="Search benefits by name or keyword…" id="searchInput">
+</div>
+<div class="counts-banner" id="countsBanner"></div>
+
+<main id="mainContent">
+
+  <!-- KEY -->
+  <div class="key-section" style="margin-top:20px;">
+    <h3>Key — benefit types</h3>
+    <div class="explainer">
+      <div class="explainer-item">
+        <strong>Universal</strong>
+        <p>Paid to everyone who meets a non-financial condition (e.g. having a child, reaching State Pension age). No means test. Not withdrawn as income rises — though some are taxable.</p>
+      </div>
+      <div class="explainer-item">
+        <strong>Contributory (NI-based)</strong>
+        <p>Entitlement depends on your National Insurance record — how many qualifying years you've paid. Not means-tested, but you must have paid in sufficiently.</p>
+      </div>
+      <div class="explainer-item">
+        <strong>Means-tested</strong>
+        <p>Withdrawn as income and savings rise. Eligibility and amount depend on household circumstances. Most are now being rolled into Universal Credit.</p>
+      </div>
+    </div>
+    <div class="key-grid" style="margin-top:14px;">
+      <div class="key-item"><div class="key-dot" style="background:var(--blue-gov)"></div> Universal</div>
+      <div class="key-item"><div class="key-dot" style="background:var(--amber)"></div> Contributory (NI)</div>
+      <div class="key-item"><div class="key-dot" style="background:var(--red)"></div> Means-tested</div>
+      <div class="key-item"><div class="key-dot" style="background:var(--green-mid)"></div> Disability &amp; Carer</div>
+      <div class="key-item"><div class="key-dot" style="background:#6b4c9a"></div> Pension-age</div>
+    </div>
+  </div>
+
+  <div class="empty-state" id="emptyState">No benefits match your current filters.</div>
+
+  <!-- CATEGORIES RENDERED BY JS -->
+  <div id="categoriesContainer"></div>
+
+</main>
+
+<div class="footer-note">
+  Rates shown are 2024–25 unless stated. Recipient figures from DWP Stat-Xplore (latest available). This page is intended as an educational guide — always check gov.uk for your exact entitlement. Data is baked in; no personal information is collected or transmitted. Not affiliated with HM Government.
+</div>
+
+<script>
+const BENEFITS = [
+  // ── UNIVERSAL ──────────────────────────────────────────────
+  {
+    id: "child-benefit",
+    name: "Child Benefit",
+    category: "Family & Children",
+    type: "universal",
+    sanctionable: false,
+    ucMigration: false,
+    rate: "£25.60/wk (eldest child), £16.95/wk (additional)",
+    recipients: "~7.7 million families",
+    eligibility: "Anyone responsible for a child under 16 (or under 20 in approved education/training). No means test.",
+    quirk: "Universal — but since 2013 a 'High Income Child Benefit Charge' claws it back via self-assessment for any earner over £60,000. Many families didn't know and faced unexpected tax bills.",
+    quirkColor: "quirk-blue"
+  },
+  {
+    id: "free-school-meals",
+    name: "Free School Meals",
+    category: "Family & Children",
+    type: "means-tested",
+    sanctionable: false,
+    ucMigration: false,
+    rate: "In-kind (school meal provided)",
+    recipients: "~2 million pupils (England)",
+    eligibility: "Children in state schools whose parents receive Universal Credit with net earnings under £7,400/yr, or certain other qualifying benefits.",
+    quirk: "In England: Universal Infant Free School Meals (UIFSM) gives all children in Reception–Year 2 free meals regardless of income. Often confused with means-tested FSM.",
+    quirkColor: "quirk-blue"
+  },
+
+  // ── MEANS-TESTED: UNIVERSAL CREDIT ─────────────────────────
+  {
+    id: "uc-standard",
+    name: "Universal Credit — Standard Allowance",
+    category: "Universal Credit",
+    type: "means-tested",
+    sanctionable: true,
+    ucMigration: true,
+    rate: "£393.45/mo (single, 25+); £309.13/mo (single, under 25); £617.60/mo (couple, both 25+)",
+    recipients: "~6.6 million households",
+    eligibility: "Working-age adults on low income or out of work. Replaces six legacy benefits. Income and savings tapered. Savings over £16,000 bar entitlement.",
+    quirk: "The standard allowance is just the base. The actual amount varies enormously depending on which 'elements' are added — for children, disability, housing, or a carer. A single man on UC gets far less than a single parent or a disabled person on the same earnings.",
+    quirkColor: "quirk-red"
+  },
+  {
+    id: "uc-child-element",
+    name: "UC — Child Element",
+    category: "Universal Credit",
+    type: "means-tested",
+    sanctionable: false,
+    ucMigration: true,
+    rate: "£333.33/mo (first/second child); £287.92/mo (disabled child lower); £414.88/mo (disabled child higher)",
+    recipients: "Part of 1.9m UC households with children",
+    eligibility: "Added for each dependent child. Until April 2025, the child element was only paid for the first two children — the 'two-child limit'. This was abolished in April 2025, and all children now attract the full element. Exceptions for the old limit had included multiple births and children conceived through rape.",
+    quirk: "Until April 2025, the two-child limit meant the same child could receive Child Benefit (universal, no limit) but no UC child element (means-tested, formerly capped at two). That anomaly — one child, two totally different rules — has now been resolved by abolition. The Child Benefit/UC distinction remains important for other reasons.",
+    quirkColor: "quirk-red"
+  },
+  {
+    id: "uc-lcwra",
+    name: "UC — Limited Capability for Work & Work-Related Activity (LCWRA)",
+    category: "Universal Credit",
+    type: "means-tested",
+    sanctionable: false,
+    ucMigration: true,
+    rate: "£416.19/mo added to standard allowance",
+    recipients: "~1.3 million UC claimants",
+    eligibility: "Added after a Work Capability Assessment finds that a person cannot work and cannot be required to prepare for work due to health conditions or disability.",
+    quirk: "Not sanctionable. There is also a lower 'LCW' (Limited Capability for Work) rate of £0 for new claims since April 2017 — new claimants who can prepare for work receive no extra amount, unlike legacy ESA.",
+    quirkColor: "quirk-green"
+  },
+  {
+    id: "uc-housing",
+    name: "UC — Housing Cost Element (LHA)",
+    category: "Universal Credit",
+    type: "means-tested",
+    sanctionable: false,
+    ucMigration: true,
+    rate: "Varies by Local Housing Allowance area and property size. Set at 30th percentile of local market rents.",
+    recipients: "~2.3 million UC households",
+    eligibility: "Renters in the private sector receive up to LHA rate for their area and bedroom entitlement. Social renters get the service charge element only. Owner-occupiers may get Support for Mortgage Interest (separate scheme).",
+    quirk: "The LHA rate was frozen from 2020 to 2024, meaning real-terms cuts as rents rose. It was partially restored in 2024 but in high-cost areas the gap between LHA and actual rents can be hundreds of pounds per month.",
+    quirkColor: "quirk-red"
+  },
+  {
+    id: "uc-carer",
+    name: "UC — Carer Element",
+    category: "Universal Credit",
+    type: "means-tested",
+    sanctionable: false,
+    ucMigration: true,
+    rate: "£198.31/mo added to award",
+    recipients: "~420,000 UC claimants",
+    eligibility: "Added where a claimant is providing 35+ hours/week of unpaid care to a severely disabled person. The disabled person must be receiving PIP daily living, DLA care, or AA.",
+    quirk: "This element exists within Universal Credit and is separate from Carer's Allowance (a standalone contributory-style benefit). It's possible to receive both, but Carer's Allowance is counted as income and deducted from UC pound-for-pound.",
+    quirkColor: ""
+  },
+  {
+    id: "uc-childcare",
+    name: "UC — Childcare Costs Element",
+    category: "Universal Credit",
+    type: "means-tested",
+    sanctionable: false,
+    ucMigration: true,
+    rate: "Up to 85% of eligible childcare costs; max £1,014.63/mo (1 child) or £1,739.37/mo (2+ children)",
+    recipients: "~130,000 UC households",
+    eligibility: "For working parents using registered childcare. Both members of a couple must be working (with limited exceptions). Paid in arrears — a cash-flow barrier for many.",
+    quirk: "Paid after costs are incurred, not before. Families must find the cash upfront and reclaim. This alone is a significant barrier to take-up for low-income parents.",
+    quirkColor: "quirk-red"
+  },
+
+  // ── LEGACY MEANS-TESTED ─────────────────────────────────────
+  {
+    id: "pension-credit",
+    name: "Pension Credit",
+    category: "Pension-age Benefits",
+    type: "means-tested",
+    sanctionable: false,
+    ucMigration: false,
+    rate: "Tops up income to £218.15/wk (single) or £332.95/wk (couple). Extra amounts for disability, caring, housing.",
+    recipients: "~1.4 million households — but an estimated 880,000 eligible households do not claim",
+    eligibility: "Pensioners (State Pension age or over) with income below the guarantee threshold. No upper savings limit, but savings above £10,000 are treated as income.",
+    quirk: "Pension Credit is the gateway to a range of other entitlements: free TV licence (over-75s), Cold Weather Payment, Housing Benefit, Council Tax reduction, and — critically — Winter Fuel Payment since 2024. Non-take-up is a serious policy problem.",
+    quirkColor: "quirk-red"
+  },
+  {
+    id: "housing-benefit",
+    name: "Housing Benefit",
+    category: "Legacy Benefits (UC migration)",
+    type: "means-tested",
+    sanctionable: false,
+    ucMigration: true,
+    rate: "As UC Housing element (see above). Same LHA rules apply.",
+    recipients: "~1.5 million (declining as UC migration continues; pension-age claims remain)",
+    eligibility: "Now only open to pension-age claimants or certain exempt groups (e.g. in temporary/supported accommodation). Working-age claimants are directed to UC.",
+    quirk: "Legacy Housing Benefit has largely been absorbed into UC for working-age claimants. Pensioners remain on it and will not move to UC.",
+    quirkColor: "quirk-blue"
+  },
+  {
+    id: "tax-credits",
+    name: "Working Tax Credit / Child Tax Credit",
+    category: "Legacy Benefits (UC migration)",
+    type: "means-tested",
+    sanctionable: false,
+    ucMigration: true,
+    rate: "Varies; basic element WTC £2,435/yr. CTC basic element £545/yr plus child element £3,455/yr per child.",
+    recipients: "~2 million households (falling steeply as UC migration concludes)",
+    eligibility: "Being phased out. New claims no longer possible (since 2019). Existing claimants are being migrated to UC by 2025.",
+    quirk: "Tax Credits were administered by HMRC, not DWP — causing a different set of overpayment and fraud dynamics. Many families moved to UC experience cash-flow gaps during transition.",
+    quirkColor: "quirk-blue"
+  },
+
+  // ── DISABILITY ──────────────────────────────────────────────
+  {
+    id: "pip",
+    name: "Personal Independence Payment (PIP)",
+    category: "Disability & Carer Benefits",
+    type: "disability",
+    sanctionable: false,
+    ucMigration: false,
+    rate: "Daily living: £72.65/wk (standard) or £108.55/wk (enhanced). Mobility: £28.70/wk (standard) or £75.75/wk (enhanced).",
+    recipients: "~3.2 million people",
+    eligibility: "Working-age adults (16–State Pension age) with a long-term health condition or disability. Assessed on ability to complete daily living and mobility activities. Not means-tested. Can be received in or out of work.",
+    quirk: "Not means-tested and not a substitute for income — it is intended to cover the extra costs of disability. Many people do not know they can receive PIP alongside UC, employment, or other income.",
+    quirkColor: "quirk-green"
+  },
+  {
+    id: "dla",
+    name: "Disability Living Allowance (DLA — Children)",
+    category: "Disability & Carer Benefits",
+    type: "disability",
+    sanctionable: false,
+    ucMigration: false,
+    rate: "Care component: £28.70–£108.55/wk. Mobility component: £28.70–£75.75/wk.",
+    recipients: "~1.2 million children",
+    eligibility: "Children under 16 with a disability or health condition requiring substantially more care or supervision than a child of the same age without the condition.",
+    quirk: "Adults with DLA are being migrated to PIP. Children remain on DLA until they turn 16, at which point they are reassessed for PIP — a transition that is often distressing for families.",
+    quirkColor: ""
+  },
+  {
+    id: "aa",
+    name: "Attendance Allowance",
+    category: "Disability & Carer Benefits",
+    type: "disability",
+    sanctionable: false,
+    ucMigration: false,
+    rate: "£72.65/wk (lower rate) or £108.55/wk (higher rate)",
+    recipients: "~1.7 million people",
+    eligibility: "People over State Pension age who need help with personal care due to disability or illness. No mobility component. Not means-tested.",
+    quirk: "Attendance Allowance is often overlooked by older people who think of it as 'only for the severely disabled'. Take-up is low relative to eligibility. It can also act as a gateway to Pension Credit top-ups.",
+    quirkColor: "quirk-green"
+  },
+  {
+    id: "carers-allowance",
+    name: "Carer's Allowance",
+    category: "Disability & Carer Benefits",
+    type: "contributory",
+    sanctionable: false,
+    ucMigration: false,
+    rate: "£81.90/wk",
+    recipients: "~1.0 million people",
+    eligibility: "Providing 35+ hours/week of care to someone receiving PIP daily living (enhanced or standard), DLA care (middle or highest rate), or Attendance Allowance. Earnings must be below £151/wk net.",
+    quirk: "One of the lowest rates for any benefit — and it is taxable. Many carers don't claim it because it can reduce other means-tested benefits pound-for-pound. The earnings limit has caused inadvertent overpayments as wages rise.",
+    quirkColor: "quirk-red"
+  },
+
+  // ── CONTRIBUTORY ────────────────────────────────────────────
+  {
+    id: "new-state-pension",
+    name: "New State Pension",
+    category: "Pension-age Benefits",
+    type: "contributory",
+    sanctionable: false,
+    ucMigration: false,
+    rate: "Up to £221.20/wk (full rate, 2024–25). Actual amount depends on NI record.",
+    recipients: "~12.9 million pensioners",
+    eligibility: "Reached State Pension age (currently 66) with at least 10 qualifying NI years. Full pension requires 35 qualifying years. For those who reached pension age before April 2016, the old 'Basic State Pension' rules apply (up to £169.50/wk).",
+    quirk: "The 'triple lock' guarantees the State Pension rises by the highest of inflation (CPI), earnings growth, or 2.5% each year. This has become politically controversial as pensioner incomes have grown relative to working-age benefits.",
+    quirkColor: "quirk-blue"
+  },
+  {
+    id: "new-style-jsa",
+    name: "New Style Jobseeker's Allowance (JSA)",
+    category: "Contributory Benefits",
+    type: "contributory",
+    sanctionable: true,
+    ucMigration: false,
+    rate: "£84.80/wk (25+); £67.20/wk (18–24)",
+    recipients: "~100,000 people",
+    eligibility: "Unemployed, available for and actively seeking work, with sufficient NI contributions in the two tax years before the claim. Paid for up to 182 days (6 months).",
+    quirk: "Time-limited to 6 months. After that, claimants must move to UC (means-tested). Also sanctionable — jobseeking requirements must be met. Can be received at the same time as UC, but is counted as income.",
+    quirkColor: "quirk-blue"
+  },
+  {
+    id: "new-style-esa",
+    name: "New Style Employment & Support Allowance (ESA)",
+    category: "Contributory Benefits",
+    type: "contributory",
+    sanctionable: false,
+    ucMigration: false,
+    rate: "Assessment phase: £84.80/wk. Work-related activity group: £84.80/wk. Support group: £129.50/wk.",
+    recipients: "~200,000 people",
+    eligibility: "Unable to work due to illness or disability, with sufficient NI contributions. Claimants undergo a Work Capability Assessment. Support group (cannot work at all) receives higher rate.",
+    quirk: "NI-based — so a disabled person without a sufficient NI record cannot access New Style ESA and must rely on UC LCWRA element instead. The two are assessed similarly but the NI route produces a non-means-tested payment.",
+    quirkColor: "quirk-blue"
+  },
+
+  // ── PENSION AGE ─────────────────────────────────────────────
+  {
+    id: "winter-fuel",
+    name: "Winter Fuel Payment",
+    category: "Pension-age Benefits",
+    type: "universal",
+    sanctionable: false,
+    ucMigration: false,
+    rate: "£200–£300 per household (depending on age)",
+    recipients: "~11 million households (pre-2024 threshold change); ~1.5 million (post-2024)",
+    eligibility: "From winter 2024, restricted to pensioners receiving Pension Credit or certain other means-tested benefits. Previously universal for all over-66s. Paid automatically — no application needed if eligible.",
+    quirk: "Until 2024 this was universal — every pensioner received it. The government restricted it to Pension Credit recipients, cutting entitlement for around 10 million households. This makes Pension Credit take-up more urgent than ever.",
+    quirkColor: "quirk-red"
+  },
+  {
+    id: "cold-weather",
+    name: "Cold Weather Payment",
+    category: "Pension-age Benefits",
+    type: "means-tested",
+    sanctionable: false,
+    ucMigration: false,
+    rate: "£25 per 7-day period of qualifying weather",
+    recipients: "Varies by winter severity",
+    eligibility: "Automatic payment when average local temperature is 0°C or below for 7 days. Must be on Pension Credit, income-based JSA/ESA, UC, or Income Support. Also for certain disability and child elements.",
+    quirk: "Automatic — no application needed. Triggered by Met Office data for your postcode area. Often confused with Winter Fuel Payment, which is a flat annual payment at a different rate.",
+    quirkColor: "quirk-blue"
+  },
+  {
+    id: "bus-pass",
+    name: "Free Bus Pass (Older Persons' Bus Pass)",
+    category: "Pension-age Benefits",
+    type: "universal",
+    sanctionable: false,
+    ucMigration: false,
+    rate: "Free off-peak bus travel on local services",
+    recipients: "~11 million pass-holders",
+    eligibility: "State Pension age in England. (Different rules in Wales, Scotland and NI, where full-day passes are available.) Applied for via local council.",
+    quirk: "A universal benefit with wide political support. In London, Freedom Passes go further — covering tube, DLR and some rail — but are issued by local authorities, not central government.",
+    quirkColor: ""
+  },
+];
+
+// ── Render ──────────────────────────────────────────────────
+const CATEGORIES_ORDER = [
+  "Universal Credit",
+  "Family & Children",
+  "Disability & Carer Benefits",
+  "Contributory Benefits",
+  "Pension-age Benefits",
+  "Legacy Benefits (UC migration)",
+];
+
+const CATEGORY_DESC = {
+  "Universal Credit": "The main working-age safety net. One payment combining several elements — but the amount varies enormously by household circumstances.",
+  "Family & Children": "Payments and entitlements related to having children. Some are universal; others are means-tested.",
+  "Disability & Carer Benefits": "For people with long-term illness, disability, or those providing substantial unpaid care. Mostly not means-tested.",
+  "Contributory Benefits": "Based on your National Insurance record. Entitlement earned through past contributions, not current income.",
+  "Pension-age Benefits": "Payments and entitlements for people who have reached State Pension age (currently 66).",
+  "Legacy Benefits (UC migration)": "Older means-tested benefits being replaced by Universal Credit. Mostly closed to new claimants.",
+};
+
+// ── CASE STUDIES ────────────────────────────────────────────
+const CASES = [
+  {
+    id: "min-wage",
+    icon: "💼",
+    name: "The Full-Time Minimum Wage Worker",
+    description: "25, single, no children, no health conditions. Private renter, Midlands. Working full-time at National Living Wage (£12.21/hr, ~£1,997/mo net).",
+    housingNote: null,
+    narrative: "Earning the National Living Wage full-time (37.5hrs/wk) produces approximately £1,997/mo net after tax and National Insurance. This is above the UC standard allowance, so no UC standard amount is paid — but UC is still open to anyone whose income, after deductions, produces a positive award. With a private rent to pay, the housing element may still apply. The UC work allowance (£404/mo with housing element) means the taper only applies to earnings above that threshold. As earnings rise through the taper, the UC award reduces. At this income level, the housing element is likely to be partially or fully tapered away depending on local LHA rates, but some residual entitlement may remain in higher-rent areas.",
+    insight: "A full-time worker on the National Living Wage will have had most or all of their UC award tapered away by earnings — but may still receive Child Benefit (if they have children), and retains NI contribution records for the State Pension. The point at which UC tapers to zero for a single renter with no children is approximately £35,000–40,000/yr gross in most regions, higher in London.",
+    items: [
+      { name: "Employment income (National Living Wage, FT)", type: "universal", monthly: 1997, note: "£12.21/hr × 37.5hrs × 52 ÷ 12, approx. net after tax and NI." },
+      { name: "UC — Standard Allowance", type: "means", monthly: 0, note: "Earnings exceed the standard allowance — tapered to zero." },
+      { name: "UC — Housing Element (residual)", type: "means", monthly: 0, note: "Likely fully tapered away at this income in most areas. May remain in very high-rent areas (e.g. London)." },
+    ],
+    inKind: [
+      { name: "NHS prescriptions (not free)", note: "At this income, prescription charges apply (currently £9.90 per item). No UC exemption." },
+      { name: "National Insurance contributions", note: "Building qualifying years toward State Pension and contributory benefits (New Style JSA, ESA)." },
+      { name: "Workplace pension (auto-enrolment)", note: "Entitled to auto-enrolment into a workplace pension with minimum 3% employer contribution." },
+    ],
+    total: 1997
+  },
+  {
+    id: "single-man",
+    icon: "🧍",
+    name: "The Single Unemployed Man",
+    description: "28, no children, no health conditions. Private renter, Midlands. Recently made redundant.",
+    housingNote: null,
+    narrative: "With insufficient National Insurance contributions for New Style JSA, Universal Credit is his only income. He receives the standard single-person allowance plus a housing element for his one-bedroom flat. He is subject to work-search requirements and may be sanctioned for non-compliance. There are no additional elements — no children, no disability, no carer responsibilities.",
+    insight: "The standard UC allowance for a single person is the most commonly cited figure in public debate. It represents the minimum working-age entitlement for someone with no children, no disability, and no NI record.",
+    items: [
+      { name: "UC — Standard Allowance (single, 25+)", type: "means", monthly: 393.45, note: "Base payment. Sanctionable." },
+      { name: "UC — Housing Element (private rent, 1-bed)", type: "means", monthly: 520, note: "Assumes 1-bed LHA rate, Midlands." },
+    ],
+    inKind: [
+      { name: "Free NHS prescriptions", note: "Free while receiving UC." },
+      { name: "Free NHS dental treatment", note: "Free while receiving UC." },
+      { name: "Help with sight tests and glasses", note: "Free NHS sight tests and vouchers toward glasses while on UC." },
+    ],
+    total: 913
+  },
+  {
+    id: "single-man-social",
+    icon: "🧍🏠",
+    name: "The Single Unemployed Man (social housing)",
+    description: "28, no children, no health conditions. Council tenant, Midlands. Same circumstances — different tenure.",
+    housingNote: "A social housing tenant pays a below-market rent set by their council or housing association. UC covers a service charge element only — the rent itself is subsidised through the tenancy agreement. The cash UC award is lower than for a private renter in otherwise identical circumstances.",
+    narrative: "Same circumstances as above, but housed by a local authority. The UC housing element is much smaller because rent support flows through the tenancy rather than through UC. Average social rents in England are approximately 40–60% below equivalent private market rents.",
+    insight: "A social tenant receives less UC cash per month than an equivalent private renter. The difference in housing cost is subsidised through the tenancy rather than through UC. Social rent levels are set by the landlord, not by UC rules.",
+    items: [
+      { name: "UC — Standard Allowance (single, 25+)", type: "means", monthly: 393.45, note: "Base payment. Sanctionable." },
+      { name: "UC — Housing Element (social rent)", type: "means", monthly: 30, note: "Covers eligible service charges only. Rent is set below-market by the landlord." },
+    ],
+    inKind: [
+      { name: "Below-market social rent", note: "Average social rent in England: ~£106/wk. Average equivalent private rent: ~£180/wk. Gap: ~£74/wk." },
+      { name: "Free NHS prescriptions", note: "Free while receiving UC." },
+      { name: "Free NHS dental treatment", note: "Free while receiving UC." },
+    ],
+    total: 423
+  },
+  {
+    id: "single-mother",
+    icon: "👩‍👧‍👦",
+    name: "The Single Parent",
+    description: "34, two children (ages 4 and 7). Private renter, North West. Not working.",
+    housingNote: null,
+    narrative: "On UC with the standard allowance, child elements for both children, and a housing element for a two-bed property. Child Benefit is paid separately and is not counted as income for UC purposes. Since April 2025, the two-child limit on the UC child element has been abolished — all children now attract the full element.",
+    insight: "Child Benefit is universal and paid in addition to any UC entitlement. It is not means-tested and not affected by earnings up to £60,000/yr. The UC child element and Child Benefit are separate payments with separate rules.",
+    items: [
+      { name: "UC — Standard Allowance (single, 25+)", type: "means", monthly: 393.45, note: "Base payment." },
+      { name: "UC — Child Element (×2)", type: "means", monthly: 666.66, note: "£333.33 per child. Two-child limit abolished April 2025." },
+      { name: "UC — Housing Element (private, 2-bed)", type: "means", monthly: 680, note: "Assumes 2-bed LHA rate, North West." },
+      { name: "Child Benefit", type: "universal", monthly: 177.80, note: "£25.60 (eldest) + £16.95 (second). Universal — not means-tested, not counted as UC income." },
+    ],
+    inKind: [
+      { name: "Free school meals", note: "Both school-age children eligible while household is on UC with earnings under £7,400/yr net." },
+      { name: "15 hours free childcare (3–4 year olds)", note: "Universal entitlement for 3–4 year olds." },
+      { name: "Healthy Start vouchers", note: "£4.25/wk for milk, fruit, veg and vitamins — for children under 4 and pregnant women on UC." },
+      { name: "Free NHS dental, prescriptions & sight tests", note: "Free while on UC." },
+    ],
+    total: 1918
+  },
+  {
+    id: "couple-three-children",
+    icon: "👨‍👩‍👧‍👦",
+    name: "The Couple with Three Children",
+    description: "Couple, three children (ages 2, 5, 9). One parent part-time (£800/mo net). Private renter, South East.",
+    housingNote: null,
+    narrative: "In work and on UC — the UC taper rate means the award reduces as earnings rise above the work allowance, at a rate of 55p per £1 earned. Since April 2025 the two-child limit is abolished, so child elements are paid for all three children. Child Benefit has never had a child limit and is paid for all three regardless of UC entitlement.",
+    insight: "The UC taper is designed so that earning more always results in higher net household income. The combined effect of the taper, income tax, and NI means marginal effective tax rates for earners in this band can be significant.",
+    items: [
+      { name: "UC — Standard Allowance (couple)", type: "means", monthly: 617.60, note: "Couple rate." },
+      { name: "UC — Child Element (×3)", type: "means", monthly: 999.99, note: "£333.33 per child. Two-child limit abolished April 2025." },
+      { name: "UC — Housing Element (private, 3-bed)", type: "means", monthly: 900, note: "Assumes 3-bed LHA rate, South East." },
+      { name: "Child Benefit (×3 children)", type: "universal", monthly: 211.60, note: "£25.60 + £16.95 + £16.95/wk. Has never had a child limit." },
+      { name: "UC earnings taper deduction", type: "means", monthly: -280, note: "55p withdrawn per £1 earned over work allowance (~£515/mo)." },
+    ],
+    inKind: [
+      { name: "Free school meals (two school-age children)", note: "Eligible while earnings remain below £7,400/yr net threshold." },
+      { name: "15 hours free childcare (youngest child)", note: "Universal for 3–4 year olds. 30 hours available if both parents working 16+ hrs/wk." },
+      { name: "Free NHS dental & prescriptions", note: "Free while on UC." },
+    ],
+    total: 2449
+  },
+  {
+    id: "disabled-person",
+    icon: "🧑‍🦽",
+    name: "The Disabled Person",
+    description: "41, serious long-term health condition, unable to work. Social housing tenant, single.",
+    housingNote: "In social housing — the UC housing element covers service charges only. Rent is set at below-market rate through the tenancy.",
+    narrative: "PIP and UC operate as entirely separate systems. PIP is not means-tested, not counted as UC income, and is available regardless of employment, savings, or other income. The LCWRA element in UC is awarded after a Work Capability Assessment and removes work-search requirements and sanctions. Both benefits must be claimed and assessed independently.",
+    insight: "PIP and the UC LCWRA element are separate assessments run by different parts of DWP. A person may qualify for one, both, or neither. PIP is also available to people who are in work.",
+    items: [
+      { name: "UC — Standard Allowance (single, 25+)", type: "means", monthly: 393.45, note: "Base payment. Not sanctionable once LCWRA awarded." },
+      { name: "UC — LCWRA Element", type: "means", monthly: 416.19, note: "Limited Capability for Work & Work-Related Activity. Requires Work Capability Assessment." },
+      { name: "UC — Housing Element (social rent)", type: "means", monthly: 30, note: "Service charge element only." },
+      { name: "PIP — Daily Living (enhanced)", type: "disability", monthly: 471.72, note: "£108.55/wk. Not means-tested. Entirely separate from UC." },
+      { name: "PIP — Mobility (standard)", type: "disability", monthly: 124.47, note: "£28.70/wk." },
+    ],
+    inKind: [
+      { name: "Below-market social rent", note: "Average social rent in England: ~£106/wk vs ~£180/wk equivalent private." },
+      { name: "Motability scheme", note: "PIP mobility component can be exchanged for a car, scooter or powered wheelchair via the Motability scheme." },
+      { name: "Blue Badge", note: "Eligible for Blue Badge on the basis of PIP mobility component." },
+      { name: "Free NHS prescriptions, dental & sight tests", note: "Free on UC and/or qualifying disability." },
+      { name: "Council Tax Reduction", note: "May be entitled to reduction via local authority scheme." },
+    ],
+    total: 1436
+  },
+  {
+    id: "pensioner-credit",
+    icon: "👵",
+    name: "The Pensioner on Pension Credit",
+    description: "74, widowed. Owns home outright. State Pension of £120/wk (partial, due to NI gaps). Mobility difficulties.",
+    housingNote: null,
+    narrative: "Pension Credit tops up income to the guaranteed minimum of £218.15/wk for a single person. Attendance Allowance is not means-tested and is not counted as Pension Credit income. Receiving Pension Credit triggers automatic entitlement to the Winter Fuel Payment (since 2024) and Cold Weather Payments, and enables access to free dental treatment and the free TV licence for over-75s. An estimated 880,000 eligible households do not claim Pension Credit.",
+    insight: "Pension Credit acts as a qualifying condition for several other entitlements: Winter Fuel Payment (since 2024), free TV licence (over-75s), Cold Weather Payments, and free NHS dental care. These are not paid automatically without a Pension Credit claim.",
+    items: [
+      { name: "State Pension (partial)", type: "contributory", monthly: 520, note: "£120/wk — below full rate due to NI record gaps." },
+      { name: "Pension Credit — Guarantee top-up", type: "means", monthly: 425.80, note: "Tops income to £218.15/wk guaranteed minimum." },
+      { name: "Attendance Allowance (higher rate)", type: "disability", monthly: 471.72, note: "£108.55/wk. Not means-tested. Not counted as Pension Credit income." },
+      { name: "Winter Fuel Payment", type: "means", monthly: 20.83, note: "~£250/yr average. Since 2024 restricted to Pension Credit recipients." },
+    ],
+    inKind: [
+      { name: "Free TV licence", note: "Worth £174.50/yr. Free for over-75s who receive Pension Credit." },
+      { name: "Free NHS dental treatment", note: "Free while on Pension Credit." },
+      { name: "Free NHS prescriptions", note: "Free for everyone aged 60 and over." },
+      { name: "Free NHS sight tests", note: "Free over-60. Vouchers toward glasses if on Pension Credit." },
+      { name: "Cold Weather Payments", note: "£25 per 7-day period when local temperature averages 0°C or below. Automatic for Pension Credit recipients." },
+      { name: "Free bus pass", note: "Free off-peak local bus travel from State Pension age (currently 66). Applied for via local council." },
+      { name: "Council Tax Reduction", note: "May be entitled to reduction via local authority scheme." },
+    ],
+    total: 1438
+  },
+  {
+    id: "carer",
+    icon: "🤝",
+    name: "The Unpaid Carer",
+    description: "52, provides full-time unpaid care for a disabled partner. Not working. Owns home outright.",
+    housingNote: null,
+    narrative: "Carer's Allowance (£81.90/wk) is treated as unearned income by UC and deducted from the UC award pound-for-pound. The net effect is that Carer's Allowance does not increase total household cash income for most UC claimants — it changes the source of the money, not the amount. The UC Carer Element is added to the standard allowance separately. The partner's PIP is their own payment.",
+    insight: "Carer's Allowance is deducted from UC as unearned income. For a UC claimant, receiving Carer's Allowance does not increase total cash income — the UC award is reduced by an equivalent amount. The UC Carer Element is what adds to the standard allowance.",
+    items: [
+      { name: "UC — Standard Allowance (single, 25+)", type: "means", monthly: 393.45, note: "Base payment." },
+      { name: "UC — Carer Element", type: "means", monthly: 198.31, note: "For 35+ hrs/wk care to someone on PIP enhanced daily living." },
+      { name: "Carer's Allowance", type: "contributory", monthly: 355.56, note: "£81.90/wk — counted as income by UC." },
+      { name: "UC deduction (Carer's Allowance as income)", type: "means", monthly: -355.56, note: "Deducted pound-for-pound as unearned income." },
+    ],
+    inKind: [
+      { name: "Free NHS prescriptions & dental", note: "Free while on UC." },
+      { name: "Carer's Assessment", note: "Right to a Carer's Assessment from the local authority under the Care Act 2014." },
+    ],
+    total: 591
+  },
+  {
+    id: "mortgage-owner",
+    icon: "🏡",
+    name: "The Mortgage Owner Who Lost Their Job",
+    description: "42, single, recently made redundant. Owns home with £180,000 mortgage outstanding. No children, no disability.",
+    housingNote: "Support for Mortgage Interest (SMI) covers interest only — not capital repayments. It is paid as a government loan secured against the property, repayable when the home is sold or ownership transfers. It is not a grant.",
+    narrative: "As a homeowner on UC, the standard housing element (LHA) does not apply — there is no rent to cover. Instead, after a 3-month qualifying period on UC, this person may apply for Support for Mortgage Interest (SMI). SMI covers interest on up to £200,000 of mortgage, calculated at a standard government rate of 3.66% — regardless of the actual mortgage rate. The SMI loan is paid directly to the lender. Capital repayments receive no support. The UC standard allowance applies as normal.",
+    insight: "SMI covers interest only, not capital. It is a loan, not a benefit — it accrues interest and must be repaid from the property's equity when sold. On a £180,000 mortgage at the standard 3.66% rate, SMI provides approximately £549/mo paid to the lender. The homeowner still receives the UC standard allowance in cash.",
+    items: [
+      { name: "UC — Standard Allowance (single, 25+)", type: "means", monthly: 393.45, note: "Base payment. Sanctionable — work-search requirements apply." },
+      { name: "Support for Mortgage Interest (SMI)", type: "means", monthly: 549, note: "3.66% of £180,000 ÷ 12 = £549/mo. Paid as a loan directly to lender. Available after 3-month UC qualifying period. Capital repayments not covered." },
+    ],
+    inKind: [
+      { name: "SMI is a loan, not a grant", note: "SMI accrues interest and is repayable from equity when the property is sold or transferred. It does not reduce the mortgage balance." },
+      { name: "Free NHS prescriptions & dental", note: "Free while on UC." },
+      { name: "No LHA housing element", note: "Homeowners do not receive the LHA-based housing element. SMI replaces it for interest costs only." },
+    ],
+    total: 393
+  },
+  {
+    icon: "🛂",
+    name: "The Asylum Seeker",
+    description: "Single adult, claim pending. Home Office dispersal accommodation, outside London. Not permitted to work.",
+    housingNote: "Accommodation is provided under the Home Office dispersal policy, managed by private contractors. Placement is on a no-choice basis. In full-board accommodation (meals provided), the weekly cash allowance reduces to £8.86.",
+    narrative: "Asylum seekers are not eligible for mainstream benefits — no UC, no Housing Benefit, no Child Benefit. Support is provided under Section 95 of the Immigration and Asylum Act 1999, administered by the Home Office. Cash is paid via an ASPEN pre-paid card. Support ends 56 days after a positive decision, at which point the person may work and claim mainstream benefits. A refused claimant may be eligible for Section 4 support at the same rate while awaiting removal.",
+    insight: "Section 95 support is separate from the mainstream DWP benefits system. The cash rate (£49.18/wk) and in-kind entitlements are set by the Home Office under immigration legislation, not welfare legislation.",
+    items: [
+      { name: "Section 95 cash allowance (ASPEN card)", type: "asylum", monthly: 213.11, note: "£49.18/wk. For food, clothing, toiletries, travel, communications. Full-board rate: £8.86/wk." },
+    ],
+    inKind: [
+      { name: "Dispersal accommodation", note: "Room in contracted housing, allocated by the Home Office. No choice of location." },
+      { name: "NHS primary and secondary care", note: "Full NHS access. Prescriptions free. Dental and optical via HC2 certificate." },
+      { name: "State education for dependent children", note: "Children are entitled to state schooling." },
+      { name: "No right to work", note: "Not permitted to work while claim is pending. May apply for permission after 12 months if claim undecided, restricted to shortage occupation list." },
+    ],
+    total: 213
+  }
+];
+
+// ── INCOME & MARGINAL RATE CHARTS ───────────────────────────
+function calcTax(gross) {
+  const pa = 12570;
+  const effPA = gross > 125140 ? 0 : gross > 100000 ? pa - (gross - 100000) / 2 : pa;
+  const taxable = Math.max(0, gross - effPA);
+  const basic = Math.min(taxable, Math.max(0, 50270 - effPA));
+  const higher = Math.min(Math.max(0, taxable - (50270 - effPA)), 75140);
+  const add = Math.max(0, taxable - (125140 - effPA));
+  return Math.max(0, basic * 0.20 + higher * 0.40 + add * 0.45);
+}
+function calcNI(g) {
+  if (g <= 12570) return 0;
+  if (g <= 50270) return (g - 12570) * 0.08;
+  return (50270 - 12570) * 0.08 + (g - 50270) * 0.02;
+}
+function netAnnual(g) { return g - calcTax(g) - calcNI(g); }
+function netMo(g)     { return netAnnual(g) / 12; }
+function fmt(n)       { return '\u00a3' + Math.round(n).toLocaleString(); }
+
+// ── HOUSEHOLD CONFIG ─────────────────────────────────────────
+const HOUSEHOLD = {
+  single_out:    { nCh:0, u4:0, dis:false, lha:600,  label:'Single, no children — outside London' },
+  single_ldn:    { nCh:0, u4:0, dis:false, lha:1000, label:'Single, no children — London' },
+  parent1_out:   { nCh:1, u4:1, dis:false, lha:800,  label:'Single parent, 1 child — outside London' },
+  parent1_ldn:   { nCh:1, u4:1, dis:false, lha:1600, label:'Single parent, 1 child — London' },
+  parent2_out:   { nCh:2, u4:1, dis:false, lha:900,  label:'Single parent, 2 children — outside London' },
+  parent2_ldn:   { nCh:2, u4:1, dis:false, lha:1900, label:'Single parent, 2 children — London' },
+  parent3_out:   { nCh:3, u4:1, dis:false, lha:1050, label:'Single parent, 3 children — outside London' },
+  parent3_ldn:   { nCh:3, u4:1, dis:false, lha:2200, label:'Single parent, 3 children — London (inner)' },
+  disability_out:{ nCh:2, u4:1, dis:true,  lha:900,  label:'Single parent, 2 children + disability — outside London' },
+};
+
+function getHH() {
+  const v = document.getElementById('householdSelect')?.value || 'single_out';
+  return HOUSEHOLD[v] || HOUSEHOLD['single_out'];
+}
+
+function childBenefit(n) {
+  if (n === 0) return 0;
+  return (25.60 + Math.max(0, n - 1) * 16.95) * 52 / 12;
+}
+
+function childBenefitAfterHIBC(gross, n) {
+  if (n === 0) return 0;
+  const cb = childBenefit(n);
+  if (gross <= 60000) return cb;
+  return Math.max(0, cb - Math.min(cb, cb * (gross - 60000) / 20000));
+}
+
+function childcareSubsidy(gross, u4) {
+  if (u4 === 0) return 0;
+  return gross < 100000 ? (6500 * u4) / 12 : 0;
+}
+
+function ucAward(gross, nCh, dis, lha) {
+  const pip    = dis ? 596.19 : 0;
+  const maxUC  = 393.45 + nCh * 333.33 + (dis ? 416.19 : 0) + lha;
+  const taper  = Math.max(0, (gross / 12 - 404) * 0.55);
+  return Math.max(0, maxUC - taper) + pip;
+}
+
+function totalIncome(gross, type) {
+  const h = HOUSEHOLD[type] || HOUSEHOLD['single_out'];
+  return netMo(gross) + ucAward(gross, h.nCh, h.dis, h.lha)
+       + childBenefitAfterHIBC(gross, h.nCh) + childcareSubsidy(gross, h.u4);
+}
+
+function marginalRate(gross, type) {
+  const d = 1000;
+  return Math.max(0, Math.min(100, (1 - (totalIncome(gross+d,type)-totalIncome(gross,type))*12/d)*100));
+}
+
+
+// Reference benefit levels (monthly cash) for different household types
+const BENEFIT_REFS = [
+  { label: 'Single person on UC + housing (private)', value: 913, color: '#1d4f7c' },
+  { label: 'Single parent, 2 children, on UC + Child Benefit', value: 1918, color: '#8b1a1a' },
+  { label: 'Single parent, 2 ch. + disability (UC LCWRA + PIP)', value: 2032, color: '#4a7c2a' },
+];
+
+const COLOURS = {
+  earnings:  '#2d5016',
+  uc:        '#4a90d9',
+  cb:        '#8e44ad',
+  pip:       '#27ae60',
+  childcare: '#e67e22',
+};
+
+// ── CALCULATOR ───────────────────────────────────────────────
+function updateCalculator() {
+  const gross = parseInt(document.getElementById('salaryInput')?.value) || 0;
+  const h     = getHH();
+  const { nCh, dis, u4, lha } = h;
+
+  const net  = netMo(gross);
+  const tax  = calcTax(gross) / 12;
+  const ni   = calcNI(gross) / 12;
+  const uc   = Math.max(0, 393.45 + nCh*333.33 + (dis?416.19:0) + lha - Math.max(0,(gross/12-404)*0.55));
+  const pip  = dis ? 596.19 : 0;
+  const cb   = childBenefitAfterHIBC(gross, nCh);
+  const cc   = childcareSubsidy(gross, u4);
+  const total = net + uc + pip + cb + cc;
+
+  // Withdrawn benefits
+  const withdrawn = [];
+  if (nCh > 0 && gross > 60000) withdrawn.push('Child Benefit tapering via HIBC');
+  if (nCh > 0 && cb === 0)      withdrawn.push('Child Benefit fully withdrawn');
+  if (u4 > 0 && gross >= 100000) withdrawn.push('30hrs free childcare lost');
+  if (uc === 0 && gross > 0)     withdrawn.push('Universal Credit fully tapered out');
+
+  const segments = [
+    { v: net, c: COLOURS.earnings },
+    { v: uc,  c: COLOURS.uc },
+    { v: pip, c: COLOURS.pip },
+    { v: cb,  c: COLOURS.cb },
+    { v: cc,  c: COLOURS.childcare },
+  ].filter(s => s.v > 0);
+
+  const lines = [
+    { c: COLOURS.earnings, label: 'Net take-home (after tax & NI)', value: net,
+      note: fmt(tax) + ' tax + ' + fmt(ni) + ' NI per month' },
+    { c: COLOURS.uc, label: 'Universal Credit', value: uc,
+      note: uc === 0 ? 'Fully tapered out at this income' : 'Incl. housing element (' + fmt(lha) + '/mo LHA)' },
+  ];
+  if (pip)  lines.push({ c: COLOURS.pip, label: 'PIP (disability)', value: pip, note: 'Not means-tested — not tapered' });
+  if (nCh > 0) lines.push({ c: COLOURS.cb, label: 'Child Benefit', value: cb,
+    note: cb === 0 ? 'Fully withdrawn (HIBC)' : gross > 60000 ? 'Partially tapered (HIBC)' : 'Universal — no means test' });
+  if (u4 > 0) lines.push({ c: COLOURS.childcare, label: 'Free childcare subsidy', value: cc,
+    note: cc === 0 ? 'Lost — income above £100,000' : '30hrs entitlement, est. value' });
+
+  const barHTML = segments.map(s =>
+    `<div class="calc-bar-segment" style="width:${(s.v/total*100).toFixed(1)}%;background:${s.c}"></div>`
+  ).join('');
+
+  const linesHTML = lines.map(l =>
+    `<div class="calc-line">
+      <div class="calc-dot" style="background:${l.c}"></div>
+      <span class="calc-line-label">${l.label}</span>
+      <span class="calc-line-value">${fmt(Math.round(l.value))}/mo</span>
+      <span class="calc-line-note">${l.note}</span>
+    </div>`
+  ).join('');
+
+  const withdrawnHTML = withdrawn.length
+    ? `<div class="calc-withdrawn">⚠ ${withdrawn.join(' · ')}</div>` : '';
+
+  const el = document.getElementById('calcResult');
+  if (el) el.innerHTML = `
+    <div class="calc-total">
+      <span class="calc-total-label">Total monthly income</span>
+      <span class="calc-total-amount">${fmt(Math.round(total))}</span>
+      <span class="calc-total-period">/month</span>
+    </div>
+    <div class="calc-bar-wrap">${barHTML}</div>
+    <div class="calc-breakdown">${linesHTML}</div>
+    ${withdrawnHTML}
+  `;
+}
+
+// ── BAR CHART ────────────────────────────────────────────────
+const BAR_BANDS = [0,10000,15000,20000,25000,30000,35000,40000,50000,60000,80000,100000,125000,150000];
+
+function drawIncomeChart() {
+  const canvas = document.getElementById('incomeChart');
+  if (!canvas) return;
+  const h = getHH();
+  const { nCh, dis, u4, lha } = h;
+
+  // Update chart section label
+  const lbl = document.getElementById('chartHouseholdLabel');
+  if (lbl) lbl.textContent = h.label;
+
+  const dpr = window.devicePixelRatio || 1;
+  const W   = Math.max(300, canvas.parentElement.clientWidth - 2);
+  const barH = 22, gap = 5;
+  const PAD  = { top:10, right:16, bottom:32, left:82 };
+  const rows = BAR_BANDS.length;
+  const H    = PAD.top + rows * (barH + gap) + PAD.bottom;
+  canvas.width  = W * dpr; canvas.height = H * dpr;
+  canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+
+  const maxVal = 16000;
+  const cW = W - PAD.left - PAD.right;
+  function xp(v) { return PAD.left + Math.min(1, v / maxVal) * cW; }
+
+  // Gridlines
+  [0,2000,4000,6000,8000,10000,12000,14000,16000].forEach(v => {
+    const x = xp(v);
+    ctx.strokeStyle = '#ece6d8'; ctx.lineWidth = 1; ctx.setLineDash([]);
+    ctx.beginPath(); ctx.moveTo(x, PAD.top); ctx.lineTo(x, H - PAD.bottom); ctx.stroke();
+    ctx.fillStyle = '#bbb'; ctx.font = "9px 'Source Sans 3',sans-serif"; ctx.textAlign = 'center';
+    ctx.fillText(v === 0 ? '£0' : '£'+(v/1000)+'k', x, H - PAD.bottom + 12);
+  });
+
+  // Compute all totals first for annotation logic
+  const totals = BAR_BANDS.map(g => {
+    const net = netMo(g);
+    const uc  = Math.max(0, 393.45 + nCh*333.33 + (dis?416.19:0) + lha - Math.max(0,(g/12-404)*0.55));
+    const pip = dis ? 596.19 : 0;
+    const cb  = childBenefitAfterHIBC(g, nCh);
+    const cc  = childcareSubsidy(g, u4);
+    return { net, uc, pip, cb, cc, total: net+uc+pip+cb+cc };
+  });
+
+  // Find first row where each benefit = 0 (for annotation)
+  const ucEndIdx    = totals.findIndex((t,i) => i > 0 && t.uc === 0 && totals[i-1].uc > 0);
+  const cbEndIdx    = nCh > 0 ? totals.findIndex((t,i) => i > 0 && t.cb === 0 && totals[i-1].cb > 0) : -1;
+  const ccEndIdx    = u4 > 0  ? totals.findIndex((t,i) => i > 0 && t.cc === 0 && totals[i-1].cc > 0) : -1;
+
+  BAR_BANDS.forEach((gross, i) => {
+    const { net, uc, pip, cb, cc, total } = totals[i];
+    const y = PAD.top + i * (barH + gap);
+
+    // Track
+    ctx.fillStyle = '#f0ece0';
+    ctx.fillRect(PAD.left, y, cW, barH);
+
+    // Stacked segments
+    let x = PAD.left;
+    [{ v:net, c:COLOURS.earnings }, { v:uc, c:COLOURS.uc }, { v:pip, c:COLOURS.pip },
+     { v:cb,  c:COLOURS.cb },       { v:cc, c:COLOURS.childcare }].forEach(s => {
+      if (s.v <= 0) return;
+      const sw = (s.v / maxVal) * cW;
+      ctx.fillStyle = s.c; ctx.fillRect(x, y, sw, barH); x += sw;
+    });
+
+    // Annotations at the bar where benefit just ended
+    if (i === ucEndIdx || i === cbEndIdx || i === ccEndIdx) {
+      const annots = [];
+      if (i === ucEndIdx)  annots.push({ c: COLOURS.uc,       t: 'UC ends' });
+      if (i === cbEndIdx)  annots.push({ c: COLOURS.cb,       t: 'CB ends' });
+      if (i === ccEndIdx)  annots.push({ c: COLOURS.childcare, t: 'Childcare ends' });
+      const bx = Math.min(xp(totals[i-1]?.total || total), W - PAD.right - 2);
+      annots.forEach((a, ai) => {
+        ctx.strokeStyle = a.c; ctx.lineWidth = 2; ctx.setLineDash([]);
+        ctx.beginPath(); ctx.moveTo(bx, y - 1); ctx.lineTo(bx, y + barH + 1); ctx.stroke();
+        ctx.fillStyle = a.c; ctx.font = "bold 8.5px 'Source Sans 3',sans-serif"; ctx.textAlign = 'left';
+        ctx.fillText(a.t, bx + 3 + ai * 60, y + barH - 3);
+      });
+    }
+
+    // Salary label
+    ctx.fillStyle = gross === 0 ? '#888' : '#555';
+    ctx.font = gross === 0 ? "italic 10px 'Source Sans 3',sans-serif" : "10px 'Source Sans 3',sans-serif";
+    ctx.textAlign = 'right';
+    ctx.fillText(gross === 0 ? 'No earnings' : '£'+(gross/1000)+'k/yr', PAD.left - 4, y + barH * 0.68);
+
+    // Total label
+    ctx.font = "bold 10px 'Source Sans 3',sans-serif";
+    const labelStr = fmt(Math.round(total)) + '/mo';
+    const labelW = ctx.measureText(labelStr).width;
+    const totalPx = xp(total);
+    if (totalPx - PAD.left > labelW + 10) {
+      ctx.fillStyle = 'rgba(255,255,255,0.9)'; ctx.textAlign = 'right';
+      ctx.fillText(labelStr, totalPx - 3, y + barH * 0.68);
+    } else {
+      ctx.fillStyle = '#333'; ctx.textAlign = 'left';
+      ctx.fillText(labelStr, totalPx + 3, y + barH * 0.68);
+    }
+  });
+
+  // Legend
+  const leg = document.getElementById('chartLegend');
+  const items = [[COLOURS.earnings, 'Net take-home from earnings'],
+                 [COLOURS.uc, 'Universal Credit (incl. housing element)']];
+  if (dis)  items.push([COLOURS.pip, 'PIP — not means-tested, not tapered']);
+  if (nCh > 0) items.push([COLOURS.cb, 'Child Benefit']);
+  if (u4 > 0)  items.push([COLOURS.childcare, 'Free childcare subsidy']);
+  if (leg) leg.innerHTML = items.map(([c,l]) =>
+    `<div class="legend-item"><div style="width:20px;height:12px;background:${c};border-radius:1px;flex-shrink:0"></div><span>${l}</span></div>`
+  ).join('');
+}
+
+// ── WIRING ───────────────────────────────────────────────────
+function updateAll() {
+  updateCalculator();
+  drawIncomeChart();
+}
+
+const salaryInput  = document.getElementById('salaryInput');
+const salarySlider = document.getElementById('salarySlider');
+const hhSelect     = document.getElementById('householdSelect');
+
+salaryInput?.addEventListener('input', () => {
+  const v = Math.max(0, Math.min(200000, parseInt(salaryInput.value)||0));
+  if (salarySlider) salarySlider.value = Math.min(v, 150000);
+  updateAll();
+});
+
+salarySlider?.addEventListener('input', () => {
+  if (salaryInput) salaryInput.value = salarySlider.value;
+  updateAll();
+});
+
+hhSelect?.addEventListener('change', updateAll);
+window.addEventListener('resize', drawIncomeChart);
+
+updateAll();
+
+
+
+let activeCaseId = null;
+
+function pill(type) {
+  const map = {
+    means: ["pill-means", "Means-tested"],
+    universal: ["pill-universal", "Universal"],
+    disability: ["pill-disability", "Disability"],
+    contributory: ["pill-contributory", "Contributory"],
+    asylum: ["pill-asylum", "Asylum support"],
+  };
+  const [cls, label] = map[type] || ["pill-means", type];
+  return `<span class="type-pill ${cls}">${label}</span>`;
+}
+
+function renderCases() {
+  const scroll = document.getElementById("casesScroll");
+  scroll.innerHTML = CASES.map(c => `
+    <div class="case-card${activeCaseId === c.id ? " active" : ""}" data-case="${c.id}">
+      <div class="case-persona">
+        <div class="case-icon">${c.icon}</div>
+        <div>
+          <div class="case-name">${c.name}</div>
+          <div class="case-description">${c.description}</div>
+        </div>
+      </div>
+      <div class="case-total-line">
+        <span class="case-total-label">Cash/mo</span>
+        <span class="case-total-amount">£${c.total.toLocaleString()}</span>
+        <span class="case-total-period">+ in-kind</span>
+      </div>
+      <div class="case-chevron">▶</div>
+    </div>
+    ${activeCaseId === c.id ? renderDetailHTML(c) : ""}
+  `).join("");
+
+  scroll.querySelectorAll(".case-card").forEach(card => {
+    card.addEventListener("click", () => {
+      activeCaseId = activeCaseId === card.dataset.case ? null : card.dataset.case;
+      renderCases();
+      if (activeCaseId) {
+        card.nextElementSibling?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    });
+  });
+}
+
+function renderDetailHTML(c) {
+  const cashRows = c.items.map(item => `
+    <tr>
+      <td>
+        <div class="benefit-name">${item.name}${pill(item.type)}</div>
+        <div class="benefit-note">${item.note}</div>
+      </td>
+      <td style="color:${item.monthly < 0 ? "var(--red)" : "var(--ink)"}">
+        ${item.monthly < 0 ? "−" : ""}£${Math.abs(item.monthly).toFixed(2)}
+      </td>
+    </tr>
+  `).join("");
+
+  const inKindRows = c.inKind && c.inKind.length > 0 ? `
+    <tr class="inkind-section-header"><td colspan="2">Benefits in kind — not counted in cash total above</td></tr>
+    ${c.inKind.map(item => `
+      <tr class="inkind-row">
+        <td>
+          <div class="benefit-name">${item.name}</div>
+          <div class="benefit-note">${item.note}</div>
+        </td>
+        <td>In kind</td>
+      </tr>
+    `).join("")}
+  ` : "";
+
+  return `<div style="border:1px solid var(--cream-dark);border-left:4px solid var(--green);background:white;padding:18px 20px;margin-bottom:4px;">
+    ${c.housingNote ? `<div class="housing-note">🏠 ${c.housingNote}</div>` : ""}
+    <p class="case-narrative">${c.narrative}</p>
+    <table class="breakdown-table">
+      <thead><tr><th>Benefit / payment</th><th>Per month</th></tr></thead>
+      <tbody>
+        ${cashRows}
+        <tr class="total-row">
+          <td>Total cash per month</td>
+          <td>£${c.total.toLocaleString()}</td>
+        </tr>
+        ${inKindRows}
+      </tbody>
+    </table>
+    <div class="case-insight"><strong>Key insight:</strong> ${c.insight}</div>
+  </div>`;
+}
+
+renderCases();
+
+// ── BENEFIT TAXONOMY ────────────────────────────────────────
+let activeFilter = "all";
+let searchTerm = "";
+
+function typeBadge(type) {
+  const map = {
+    "universal": ["badge-universal", "Universal"],
+    "means-tested": ["badge-means-tested", "Means-tested"],
+    "contributory": ["badge-contributory", "Contributory"],
+    "disability": ["badge-disability", "Disability"],
+    "pension": ["badge-pension", "Pension-age"],
+  };
+  const [cls, label] = map[type] || ["badge-means-tested", type];
+  return `<span class="type-badge ${cls}">${label}</span>`;
+}
+
+function matchesFilter(b) {
+  if (activeFilter === "all") return true;
+  if (activeFilter === "sanctionable") return b.sanctionable;
+  if (activeFilter === "uc-migration") return b.ucMigration;
+  return b.type === activeFilter;
+}
+
+function matchesSearch(b) {
+  if (!searchTerm) return true;
+  const q = searchTerm.toLowerCase();
+  return (
+    b.name.toLowerCase().includes(q) ||
+    b.eligibility.toLowerCase().includes(q) ||
+    b.quirk.toLowerCase().includes(q) ||
+    b.category.toLowerCase().includes(q)
+  );
+}
+
+function renderAll() {
+  const container = document.getElementById("categoriesContainer");
+  container.innerHTML = "";
+  let totalVisible = 0;
+
+  CATEGORIES_ORDER.forEach(cat => {
+    const benefits = BENEFITS.filter(b => b.category === cat && matchesFilter(b) && matchesSearch(b));
+    if (benefits.length === 0) return;
+    totalVisible += benefits.length;
+
+    const section = document.createElement("div");
+    section.className = "category";
+    section.innerHTML = `
+      <div class="category-header">
+        <h2>${cat}</h2>
+        <p>${CATEGORY_DESC[cat] || ""}</p>
+        <span class="category-count">${benefits.length} benefit${benefits.length > 1 ? "s" : ""}</span>
+      </div>
+      <div class="cards-grid">
+        ${benefits.map(b => `
+          <div class="card type-${b.type}" data-id="${b.id}">
+            <div class="card-top">
+              <h3>${b.name}</h3>
+              ${typeBadge(b.type)}
+            </div>
+            <p class="card-desc">${b.eligibility}</p>
+            <div class="card-meta">
+              <div class="meta-item">
+                <span class="meta-label">Rate</span>
+                <span class="meta-value">${b.rate}</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Recipients</span>
+                <span class="meta-value">${b.recipients}</span>
+              </div>
+              ${b.sanctionable ? `<div class="meta-item" style="grid-column:1/-1"><span class="meta-label">Conditionality</span><span class="meta-value" style="color:var(--red)">⚠ Sanctionable — requirements must be met or payment can be reduced</span></div>` : ""}
+            </div>
+            ${b.quirk ? `<div class="quirk ${b.quirkColor}">🔍 ${b.quirk}</div>` : ""}
+          </div>
+        `).join("")}
+      </div>`;
+    container.appendChild(section);
+  });
+
+  const empty = document.getElementById("emptyState");
+  empty.classList.toggle("visible", totalVisible === 0);
+
+  const banner = document.getElementById("countsBanner");
+  if (activeFilter !== "all" || searchTerm) {
+    banner.textContent = `Showing ${totalVisible} of ${BENEFITS.length} benefits`;
+  } else {
+    banner.textContent = `${BENEFITS.length} benefits across ${CATEGORIES_ORDER.length} categories`;
+  }
+}
+
+// Filter chips
+document.querySelectorAll(".chip").forEach(chip => {
+  chip.addEventListener("click", () => {
+    document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+    chip.classList.add("active");
+    activeFilter = chip.dataset.filter;
+    renderAll();
+  });
+});
+
+// Search
+document.getElementById("searchInput").addEventListener("input", e => {
+  searchTerm = e.target.value.trim();
+  renderAll();
+});
+
+renderAll();
+</script>
+</body>
+</html>
